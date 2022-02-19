@@ -89,7 +89,7 @@ Future<List<CameraDescription>> availableCameras() async {
       );
     }).toList();
   } on PlatformException catch (e) {
-    throw CameraException(e.code, e.message);
+    throw CameraException(e.code, e.message.toString());
   }
 }
 
@@ -140,15 +140,15 @@ class StreamStatistics {
   final int height;
 
   StreamStatistics({
-    @required this.cacheSize,
-    @required this.sentAudioFrames,
-    @required this.sentVideoFrames,
-    @required this.droppedAudioFrames,
-    @required this.droppedVideoFrames,
-    @required this.bitrate,
-    @required this.width,
-    @required this.height,
-    @required this.isAudioMuted,
+    required this.cacheSize,
+    required this.sentAudioFrames,
+    required this.sentVideoFrames,
+    required this.droppedAudioFrames,
+    required this.droppedVideoFrames,
+    required this.bitrate,
+    required this.width,
+    required this.height,
+    required this.isAudioMuted,
   });
 
   @override
@@ -347,7 +347,7 @@ class CameraController extends ValueNotifier<CameraValue> {
   StreamSubscription<dynamic> _eventSubscription;
   StreamSubscription<dynamic> _imageStreamSubscription;
   Completer<void> _creatingCompleter;
-  final bool androidUseOpenGL;
+  final bool? androidUseOpenGL;
 
   /// Initializes the camera on the device.
   ///
@@ -380,7 +380,7 @@ class CameraController extends ValueNotifier<CameraValue> {
         previewQuarterTurns: reply['previewQuarterTurns'],
       );
     } on PlatformException catch (e) {
-      throw CameraException(e.code, e.message);
+      throw CameraException(e.code, e.message.toString());
     }
     _eventSubscription = EventChannel(
             'plugins.flutter.io/rtmp_publisher/cameraEvents$_textureId')
@@ -499,7 +499,7 @@ class CameraController extends ValueNotifier<CameraValue> {
       value = value.copyWith(isTakingPicture: false);
     } on PlatformException catch (e) {
       value = value.copyWith(isTakingPicture: false);
-      throw CameraException(e.code, e.message);
+      throw CameraException(e.code, e.message.toString());
     }
   }
 
@@ -546,7 +546,7 @@ class CameraController extends ValueNotifier<CameraValue> {
       await _channel.invokeMethod<void>('startImageStream');
       value = value.copyWith(isStreamingImages: true);
     } on PlatformException catch (e) {
-      throw CameraException(e.code, e.message);
+      throw CameraException(e.code, e.message.toString());
     }
     const EventChannel cameraEventChannel =
         EventChannel('plugins.flutter.io/rtmp_publisher/imageStream');
@@ -580,7 +580,7 @@ class CameraController extends ValueNotifier<CameraValue> {
       value = value.copyWith(isStreamingImages: false);
       await _channel.invokeMethod<void>('stopImageStream');
     } on PlatformException catch (e) {
-      throw CameraException(e.code, e.message);
+      throw CameraException(e.code, e.message.toString());
     }
 
     await _imageStreamSubscription.cancel();
@@ -605,7 +605,7 @@ class CameraController extends ValueNotifier<CameraValue> {
     }
 
     try {
-      var data = await _channel
+      dynamic data = await _channel
           .invokeMapMethod<String, dynamic>('getStreamStatistics');
       return StreamStatistics(
         sentAudioFrames: data["sentAudioFrames"],
@@ -619,7 +619,7 @@ class CameraController extends ValueNotifier<CameraValue> {
         droppedVideoFrames: data["droppedVideoFrames"],
       );
     } on PlatformException catch (e) {
-      throw CameraException(e.code, e.message);
+      throw CameraException(e.code, e.message.toString());
     }
   }
 
@@ -660,7 +660,7 @@ class CameraController extends ValueNotifier<CameraValue> {
       );
       value = value.copyWith(isRecordingVideo: true, isRecordingPaused: false);
     } on PlatformException catch (e) {
-      throw CameraException(e.code, e.message);
+      throw CameraException(e.code, e.message.toString());
     }
   }
 
@@ -686,7 +686,7 @@ class CameraController extends ValueNotifier<CameraValue> {
         <String, dynamic>{'textureId': _textureId},
       );
     } on PlatformException catch (e) {
-      throw CameraException(e.code, e.message);
+      throw CameraException(e.code, e.message.toString());
     }
   }
 
@@ -713,7 +713,7 @@ class CameraController extends ValueNotifier<CameraValue> {
         <String, dynamic>{'textureId': _textureId},
       );
     } on PlatformException catch (e) {
-      throw CameraException(e.code, e.message);
+      throw CameraException(e.code, e.message.toString());
     }
   }
 
@@ -740,7 +740,7 @@ class CameraController extends ValueNotifier<CameraValue> {
         <String, dynamic>{'textureId': _textureId},
       );
     } on PlatformException catch (e) {
-      throw CameraException(e.code, e.message);
+      throw CameraException(e.code, e.message.toString());
     }
   }
 
@@ -750,7 +750,7 @@ class CameraController extends ValueNotifier<CameraValue> {
   ///
   /// Throws a [CameraException] if the capture fails.
   Future<void> startVideoRecordingAndStreaming(String filePath, String url,
-      {int bitrate = 1200 * 1024, bool androidUseOpenGL}) async {
+      {int bitrate = 1200 * 1024, bool? androidUseOpenGL}) async {
     if (!value.isInitialized || _isDisposed) {
       throw CameraException(
         'Uninitialized CameraController',
@@ -795,7 +795,7 @@ class CameraController extends ValueNotifier<CameraValue> {
       value =
           value.copyWith(isStreamingVideoRtmp: true, isStreamingPaused: false);
     } on PlatformException catch (e) {
-      throw CameraException(e.code, e.message);
+      throw CameraException(e.code, e.message.toString());
     }
   }
 
@@ -805,7 +805,7 @@ class CameraController extends ValueNotifier<CameraValue> {
   ///
   /// Throws a [CameraException] if the capture fails.
   Future<void> startVideoStreaming(String url,
-      {int bitrate = 1200 * 1024, bool androidUseOpenGL}) async {
+      {int bitrate = 1200 * 1024, bool? androidUseOpenGL}) async {
     if (!value.isInitialized || _isDisposed) {
       throw CameraException(
         'Uninitialized CameraController',
@@ -841,7 +841,7 @@ class CameraController extends ValueNotifier<CameraValue> {
       value =
           value.copyWith(isStreamingVideoRtmp: true, isStreamingPaused: false);
     } on PlatformException catch (e) {
-      throw CameraException(e.code, e.message);
+      throw CameraException(e.code, e.message.toString());
     }
   }
 
@@ -869,7 +869,7 @@ class CameraController extends ValueNotifier<CameraValue> {
       );
     } on PlatformException catch (e) {
       print("Got exception " + e.toString());
-      throw CameraException(e.code, e.message);
+      throw CameraException(e.code, e.message.toString());
     }
   }
 
@@ -896,7 +896,7 @@ class CameraController extends ValueNotifier<CameraValue> {
         await _channel.invokeMethod<void>('stopImageStream');
       }
     } on PlatformException catch (e) {
-      throw CameraException(e.code, e.message);
+      throw CameraException(e.code, e.message.toString());
     }
   }
 
@@ -923,7 +923,7 @@ class CameraController extends ValueNotifier<CameraValue> {
         <String, dynamic>{'textureId': _textureId},
       );
     } on PlatformException catch (e) {
-      throw CameraException(e.code, e.message);
+      throw CameraException(e.code, e.message.toString());
     }
   }
 
@@ -950,7 +950,7 @@ class CameraController extends ValueNotifier<CameraValue> {
         <String, dynamic>{'textureId': _textureId},
       );
     } on PlatformException catch (e) {
-      throw CameraException(e.code, e.message);
+      throw CameraException(e.code, e.message.toString());
     }
   }
 
