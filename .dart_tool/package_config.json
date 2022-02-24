@@ -416,13 +416,13 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "camera_with_rtmp",
+      "name": "flutter_rtmp",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2022-02-19T08:21:12.473242Z",
+  "generated": "2022-02-24T13:55:59.274211Z",
   "generator": "pub",
   "generatorVersion": "2.14.4"
 }

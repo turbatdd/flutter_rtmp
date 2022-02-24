@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-import 'package:camera_with_rtmp/camera.dart';
-import 'package:camera_with_rtmp/new/common/native_texture.dart';
+import 'package:flutter_rtmp/camera.dart';
+import 'package:flutter_rtmp/new/common/native_texture.dart';
 import 'package:mockito/mockito.dart';
 
 import 'camera_testing.dart';
@@ -42,22 +42,19 @@ void main() {
       test('Initializing a second controller closes the first', () {
         final MockCameraDescription description = MockCameraDescription();
 
-        final  controller1 =
-            CameraController(
-           description,
-              ResolutionPreset.medium,
+        final controller1 = CameraController(
+          description,
+          ResolutionPreset.medium,
         );
 
         controller1.initialize();
 
-        final  controller2 =
-            CameraController(
-           description,
-              ResolutionPreset.medium,
+        final controller2 = CameraController(
+          description,
+          ResolutionPreset.medium,
         );
 
         controller2.initialize();
-
       });
     });
 
@@ -77,5 +74,4 @@ void main() {
   });
 }
 
-class MockCameraDescription extends Mock implements CameraDescription {
-}
+class MockCameraDescription extends Mock implements CameraDescription {}

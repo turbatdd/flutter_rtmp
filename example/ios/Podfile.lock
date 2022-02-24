@@ -1,5 +1,5 @@
 PODS:
-  - camera_with_rtmp (0.0.1):
+  - flutter_rtmp (0.0.1):
     - Flutter
     - HaishinKit (~> 1.0.10)
   - e2e (0.0.1):
@@ -16,7 +16,7 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
-  - camera_with_rtmp (from `.symlinks/plugins/camera_with_rtmp/ios`)
+  - flutter_rtmp (from `.symlinks/plugins/flutter_rtmp/ios`)
   - e2e (from `.symlinks/plugins/e2e/ios`)
   - Flutter (from `Flutter`)
   - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
@@ -29,8 +29,8 @@ SPEC REPOS:
     - Logboard
 
 EXTERNAL SOURCES:
-  camera_with_rtmp:
-    :path: ".symlinks/plugins/camera_with_rtmp/ios"
+  flutter_rtmp:
+    :path: ".symlinks/plugins/flutter_rtmp/ios"
   e2e:
     :path: ".symlinks/plugins/e2e/ios"
   Flutter:
@@ -43,7 +43,7 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/wakelock/ios"
 
 SPEC CHECKSUMS:
-  camera_with_rtmp: e5ba26676cb95db0a164cd414ee0c9ac1731c1f6
+  flutter_rtmp: e5ba26676cb95db0a164cd414ee0c9ac1731c1f6
   e2e: d0c9f8c832b4cc7ab386d0c0f0af67fe5ac0c3bd
   Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
   HaishinKit: d1786896ace24065d466bde02356c5352ac001b0

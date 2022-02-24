@@ -1,4 +1,4 @@
-package com.whelksoft.rtmppublisher_example
+package com.turbatdd.rtmppublisher_example
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -5,7 +5,7 @@
 import '../camera_testing.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:camera_with_rtmp/camera.dart';
+import 'package:flutter_rtmp/camera.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -64,7 +64,8 @@ void main() {
       test('open', () async {
         final cameras = await availableCameras();
         final controller = CameraController(
-          cameras.first, ResolutionPreset.medium,
+          cameras.first,
+          ResolutionPreset.medium,
         );
         controller.initialize();
 

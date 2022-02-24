@@ -7,7 +7,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:camera_with_rtmp/camera.dart';
+import 'package:flutter_rtmp/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:video_player/video_player.dart';
@@ -240,7 +240,9 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
               : null,
         ),
         IconButton(
-          icon: controller != null && (controller.value.isRecordingPaused || controller.value.isStreamingPaused)
+          icon: controller != null &&
+                  (controller.value.isRecordingPaused ||
+                      controller.value.isStreamingPaused)
               ? Icon(Icons.play_arrow)
               : Icon(Icons.pause),
           color: Colors.blue,
@@ -299,7 +301,8 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
   String timestamp() => DateTime.now().millisecondsSinceEpoch.toString();
 
   void showInSnackBar(String message) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
 
   void onNewCameraSelected(CameraDescription cameraDescription) async {
@@ -467,12 +470,12 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
 
   Future<void> pauseVideoRecording() async {
     try {
-     if (controller.value.isRecordingVideo) {
-       await controller.pauseVideoRecording();
-     }
-     if (controller.value.isStreamingVideoRtmp) {
-       await controller.pauseVideoStreaming();
-     }
+      if (controller.value.isRecordingVideo) {
+        await controller.pauseVideoRecording();
+      }
+      if (controller.value.isStreamingVideoRtmp) {
+        await controller.pauseVideoStreaming();
+      }
     } on CameraException catch (e) {
       _showCameraException(e);
       rethrow;
@@ -481,12 +484,12 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
 
   Future<void> resumeVideoRecording() async {
     try {
-     if (controller.value.isRecordingVideo) {
-       await controller.resumeVideoRecording();
-     }
-     if (controller.value.isStreamingVideoRtmp) {
-       await controller.resumeVideoStreaming();
-     }
+      if (controller.value.isRecordingVideo) {
+        await controller.resumeVideoRecording();
+      }
+      if (controller.value.isStreamingVideoRtmp) {
+        await controller.resumeVideoStreaming();
+      }
     } on CameraException catch (e) {
       _showCameraException(e);
       rethrow;

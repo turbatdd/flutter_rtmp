@@ -1,4 +1,4 @@
-package com.whelksoft.camera_with_rtmp
+package com.turbatdd.flutter_rtmp
 
 import android.annotation.SuppressLint
 import android.app.Activity

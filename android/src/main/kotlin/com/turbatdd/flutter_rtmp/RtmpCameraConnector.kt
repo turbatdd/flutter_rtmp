@@ -1,4 +1,4 @@
-package com.whelksoft.camera_with_rtmp
+package com.turbatdd.flutter_rtmp
 
 import android.content.Context
 import android.hardware.camera2.CameraCharacteristics

@@ -1,11 +1,11 @@
-package com.whelksoft.camera_with_rtmp
+package com.turbatdd.flutter_rtmp
 
 import android.app.Activity
 import android.hardware.camera2.CameraAccessException
 import android.os.Build
 import io.flutter.Log
 import androidx.annotation.RequiresApi
-import com.whelksoft.camera_with_rtmp.CameraPermissions.ResultCallback
+import com.turbatdd.flutter_rtmp.CameraPermissions.ResultCallback
 import io.flutter.plugin.common.*
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.view.TextureRegistry
@@ -181,8 +181,8 @@ internal class MethodCallHandlerImpl(
     }
 
     init {
-        methodChannel = MethodChannel(messenger, "plugins.flutter.io/camera_with_rtmp")
-        imageStreamChannel = EventChannel(messenger, "plugins.flutter.io/camera_with_rtmp/imageStream")
+        methodChannel = MethodChannel(messenger, "plugins.flutter.io/flutter_rtmp")
+        imageStreamChannel = EventChannel(messenger, "plugins.flutter.io/flutter_rtmp/imageStream")
         methodChannel.setMethodCallHandler(this)
     }
 }

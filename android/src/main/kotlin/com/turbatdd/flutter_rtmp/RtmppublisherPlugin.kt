@@ -1,4 +1,4 @@
-package com.whelksoft.camera_with_rtmp
+package com.turbatdd.flutter_rtmp
 
 import android.app.Activity
 import android.os.Build
