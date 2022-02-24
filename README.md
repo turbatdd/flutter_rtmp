@@ -117,4 +117,4 @@ class _CameraAppState extends State<CameraApp> {
 ```
 
 A more complete example of doing rtmp streaming is in the
-[example code](https://github.com/pinkfish/flutter_rtmppublisher/tree/master/example)
+[example code](https://github.com/turbatdd/flutter_rtmp/tree/master/example)
