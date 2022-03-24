@@ -22,8 +22,8 @@ dev_dependencies:
   mockito: ^5.0.7
 
 dependency_overrides:
-  crypto: ^3.0.0
-  convert: ^3.0.0
+  crypto: ^3.0.1
+  convert: ^3.0.1
 
 # The following section is specific to Flutter.
 flutter:
