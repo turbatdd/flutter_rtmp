@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_rtmp'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'FLutter plugin to allow rtmp to work with ios.'
   s.description      = <<-DESC
 A new flutter plugin project.
